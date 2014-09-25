@@ -1,5 +1,5 @@
 # PagerClickTitleStrip
-* * *
+
 This is a  simple forked version of the <b>PagerTitleStrip</b> to include swipe on click.
 Android <b>PagerTitleStrip</b> lacks click event functionality ,this one adds the same.
 
