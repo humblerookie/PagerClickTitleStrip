@@ -2,7 +2,7 @@
  * @author Anvith Bhat
  * <b>Feel free to use and fork ;) </b>
  * *******************************************************************************/
-package com.hipcask.utils;
+package com.widgets;
 
 import android.content.Context;
 import android.support.v4.view.PagerTitleStrip;
