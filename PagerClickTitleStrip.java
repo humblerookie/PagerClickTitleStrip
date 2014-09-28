@@ -2,18 +2,19 @@
  * @author Anvith Bhat
  * <b>Feel free to use and fork ;) </b>
  * *******************************************************************************/
-package com.widgets;
+package com.widget;
 
 import android.content.Context;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.TextView;
 
 public class PagerClickTitleStrip extends PagerTitleStrip {
 	private TextView mTextPrev, mTextNext;
-	private ViewPager mViewPager;
+	private ViewPager mPager;
 
 	public PagerClickTitleStrip(Context arg0, AttributeSet arg1) {
 		super(arg0, arg1);
@@ -24,18 +25,18 @@ public class PagerClickTitleStrip extends PagerTitleStrip {
 
 			@Override
 			public void onClick(View v) {
-				if (mViewPager != null && mViewPager.getCurrentItem() != 0)
-					mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
+				if (mPager != null && mPager.getCurrentItem() != 0)
+					mPager.setCurrentItem(mPager.getCurrentItem() - 1);
 			}
 		});
 		mTextNext.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				if (mViewPager != null
-						&& mViewPager.getCurrentItem() != mViewPager
+				if (mPager != null
+						&& mPager.getCurrentItem() != mPager
 								.getAdapter().getCount() - 1)
-					mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+					mPager.setCurrentItem(mPager.getCurrentItem() + 1);
 			}
 
 		});
@@ -43,12 +44,14 @@ public class PagerClickTitleStrip extends PagerTitleStrip {
 		invalidate();
 	}
 
-	public ViewPager getViewPager() {
-		return mViewPager;
-	}
-
-	public void setViewPager(ViewPager vPager) {
-		this.mViewPager = vPager;
+	@Override
+	protected void onAttachedToWindow() {
+		super.onAttachedToWindow();
+		ViewParent parent = getParent();
+	    if (!(parent instanceof ViewPager)) {
+	        throw new IllegalStateException("PagerTitleStrip must be a direct child of a ViewPager.");
+	      }
+	    mPager=(ViewPager)parent;
 	}
 
 }
