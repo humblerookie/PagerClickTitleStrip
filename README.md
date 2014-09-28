@@ -12,7 +12,7 @@ Android <b>PagerTitleStrip</b> lacks click event functionality ,this one adds th
             android:layout_height="match_parent"
             >
   
-	        <com.hipcask.utils.PagerClickTitleStrip
+	        <com.widget.PagerClickTitleStrip
 	            android:id="@+id/pager_title_strip"
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
